@@ -4,7 +4,15 @@ import React from 'react';
 function Form() {
 
     function signUp(formData) {
-        const email = formData.get("email");
+        const data = Object.fromEntries(formData)
+        const dietaryRestrictions = formData.getAll("dietaryRestrictions")
+        const allData = {
+            ...data,
+            dietaryRestrictions
+        }
+        console.log(allData)
+
+        /*const email = formData.get("email");
         const password = formData.get("password");
         const description = formData.get("description");
         const employmentStatus = formData.get("employmentStatus");
@@ -16,7 +24,7 @@ function Form() {
         console.log("Description:", description);
         console.log("Employment Status:", employmentStatus);
         console.log("Dietary Restrictions:", dietaryRestrictions);
-        console.log("Favorite Color:", favColor);
+        console.log("Favorite Color:", favColor);*/
     }
 
     function handleSubmit(event) {
@@ -73,7 +81,7 @@ function Form() {
                 </fieldset>
 
                 <label htmlFor="favColor">What is your favorite color?</label>
-                <select id="favColor" name="favColor" defaultValue="" required>
+                <select id="favColor" name="favColor" defaultValue="blue" required>
                     <option value="" disabled>-- Choose A Color --</option>
                     <option value="red">Red</option>
                     <option value="orange">Orange</option>
